@@ -121,6 +121,7 @@ public class The_First_Scene extends SimpleApplication {
         Roadline.scaleTextureCoordinates(new Vector2f(1f, 1f));
         roadLine[0].setLocalTranslation(0f,-0.01f,175f);        // road0 line 0
         rootNode.attachChild(roadLine[0]);
+
 //        roadLine[1].setLocalTranslation(0f,-0.01f,239f);        // road0 line 2
 //        roadLine[1].rotate(0.0f,3.1415926f,0.0f);rootNode.attachChild(roadLine[1]);
 //        roadLine[2].setLocalTranslation(32f,-0.01f,207f);        // road0 line 1
@@ -174,13 +175,7 @@ public class The_First_Scene extends SimpleApplication {
         crosswalk[2].rotate(0.0f,1.57079f,0.0f);rootNode.attachChild(crosswalk[2]);
         crosswalk[3].setLocalTranslation(5.50f,-0.01f,207f);                                       // 0 4
         crosswalk[3].rotate(0.0f,1.57079f,0.0f);rootNode.attachChild(crosswalk[3]);
-        
-        
-        
-        
-        
-        
-        
+                
         Box Road2 = new Box(4f,0.01f,325.0f); // the second road condition
         Road2.scaleTextureCoordinates(new Vector2f(34f, 1f));
         for(int i = 1; i<num_road; i++)
@@ -369,20 +364,5 @@ public class The_First_Scene extends SimpleApplication {
       
 
     }
-        
-//      @Override
-//    public void stop() {
-//    String path = "Models/Scenes/grassPlane/Scene/Scene.j3o";
-//    assetManager.registerLocator("assets", FileLocator.class);
-//    BinaryExporter exporter = BinaryExporter.getInstance();
-//    Spatial model = (Spatial) assetManager.loadModel(path);
-//    rootNode.attachChild(model);
-//    File file = new File("assets/1/" + path.replace("Scene", "j3o"));
-//    try {
-//      exporter.save(model, file);
-//    } catch (IOException ex) {
-//      ex.printStackTrace();
-//    }
-//    super.stop(); // continue quitting the game
-//  }
+       
 }
