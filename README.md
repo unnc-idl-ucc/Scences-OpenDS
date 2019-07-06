@@ -1,5 +1,6 @@
 # Scenes-OpenDS
-Built Scenes to support for our user studies in 2019.
+
+Scenes, which were used to conduct user studies, were released.
 
 Directory
 =========
