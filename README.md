@@ -66,7 +66,11 @@ size in 3 dimensions|	(3000f,0.1f,3000f);
 Rotation in 3 dimensions	|(0.0f,0.0f,0.0f);
 Position in 3 dimensions	|(400, -0.11f, 398);
 
-
+The first line define the mesh shape and the size of mesh.
+The second line set material.
+The third and forth lines define a geometry with the setted mesh and material.
+The fifth line is used to chanage the rotation angle.
+The last line is used to attach the geometry to the scene.
 Textures
 -----
 <br>
@@ -85,6 +89,10 @@ Wrap Mode|	Repeat
 :- | :-
 repeat number in 2 dimensions|	(3000,3000);
 
+The frist line is used to read the texture from the customer path.
+The second line set the wrap mode of the texture.
+The thrid line define the number of repeat for this texture in a geometry(2D).
+The last line means paste the material onto the geometry.
 Models
 -----
 <br>
@@ -108,6 +116,11 @@ Model type|	.scene
 size scale in 3 dimensions|	(2f, 2f, 2f);
 Rotation in 3 dimensions	|(0f, 3.1415f, 0);
 Position in 3 dimensions	|(-5f, -1.1f, -200f);
+
+The first three line is read the model file.
+The forth line is set the size of the model.
+The fifth line is set the rotation of the model.
+The sixth line define the position of the moedel in the scene.
 
 Light
 -----
@@ -151,6 +164,9 @@ save type|	.j3o
 save path|	./assets/Result/
 file name	| scene1.j3o
 
+The first line define the path to save the file.
+The second line define a binary exporter.
+The sixth line used to save the rootNode(The scene) to the file.
 References
 ========
 
