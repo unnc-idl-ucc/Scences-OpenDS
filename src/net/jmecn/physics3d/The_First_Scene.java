@@ -38,18 +38,32 @@ public class The_First_Scene extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         PhysicsSpace physicsSpace = Space_init();
-        cam_setting(100, 0f,2f,-250f);
+        cam_setting(100, 0f,8f,0f);
         add_Grand(physicsSpace);
         add_cross();
         add_mainroad(4);
         T_cross_init();
         Speed_limit("Scenes/Task/speedLimit50/speedLimit50.scene");
         Guidep();
+        add_park("Scenes/Task/Parking_building/Parking.scene");
         fence_init(5);
         tree_init(5);
-        Export("Result/scene1.j3o");
+//        DirectionalLight sun1 = new DirectionalLight();                         // light1
+//        sun1.setDirection(new Vector3f(0.1f, 0.5f, 1.0f).normalizeLocal());
+//        rootNode.addLight(sun1);
+//        DirectionalLight sun2 = new DirectionalLight();                         // light2
+//        sun2.setDirection(new Vector3f(1f, 0.1f, 1f).normalizeLocal());
+//        rootNode.addLight(sun2);
+        Export("Result/scene2.j3o");
     }
     
+    public void add_park(String path){
+        float[] scale = new float[] {1f, 1f, 1f};
+        Spatial park_building = Load_model(path, scale[0],scale[1],scale[2]);
+        float[] position = new float[] {768f,8f,1302f };
+        float[] rotation = new float[] {0f, 3.1415926f, 0};
+        add_sp(park_building,position, rotation);
+    }
     
     public void add_cross(){
         float[] cross_size = {9f,0.01f,9f};
@@ -90,16 +104,16 @@ public class The_First_Scene extends SimpleApplication {
             fn[i] = new Node("Node");
             rootNode.attachChild(fn[i]);
         }
-        fn[0].setLocalTranslation(0f, -0.1f, 272f);
+        fn[0].setLocalTranslation(0f, -0.1f, 392f);
         add_Fence(fn[0]);
-        fn[1].setLocalTranslation(0f, -0.1f, -495f);
+        fn[1].setLocalTranslation(0f, -0.1f, -325f);
         add_Fence(fn[1]);
-        fn[2].setLocalTranslation(768f, -0.1f, 272f);
+        fn[2].setLocalTranslation(768f, -0.1f, 392f);
         add_Fence(fn[2]);
-        fn[3].setLocalTranslation(65f, -0.1f, 207f);
+        fn[3].setLocalTranslation(185f, -0.1f, 207f);
         fn[3].rotate(0f, 1.57059f, 0f);
         add_Fence(fn[3]);
-        fn[4].setLocalTranslation(65f, -0.1f, 975f);
+        fn[4].setLocalTranslation(185f, -0.1f, 975f);
         fn[4].rotate(0f, 1.57059f, 0f);
         add_Fence(fn[4]);
     }
@@ -131,7 +145,7 @@ public class The_First_Scene extends SimpleApplication {
         float[] size = {3000f,0.1f,3000f};
         float[] num = {3000,3000};
         Spatial grand = Spatial_init(size,num, grand_tex);
-        grand.setLocalTranslation(400, -0.11f, 398);
+        grand.setLocalTranslation(400, -0.12f, 398);
         rootNode.attachChild(grand);
         physicsSpace.add(grand);
     }
@@ -143,8 +157,11 @@ public class The_First_Scene extends SimpleApplication {
         Texture road_tex = tex_init("Scenes/Task/two/ML2.jpg", true);
         float[] rmian_scale = {21f,2f};
         Spatial main_road1 = Spatial_init(main_size, rmian_scale, road_tex);
+        Spatial last_road1 = Spatial_init(main_size, rmian_scale, road_tex);
         float[] first_position = {0f,0.01f,-175f};
         add_sp(main_road1, first_position, init_rotation);
+        float[] last_postion = {768f,0.01f,1357f};
+        add_sp(last_road1,last_postion, init_rotation);
         //Spatial main_road = Spatial_init(main_size, rmian_scale, road_tex);
         for(int i = 0; i<num; i++){
             Spatial main_road = Spatial_init(main_size, rmian_scale, road_tex);
@@ -221,7 +238,7 @@ public class The_First_Scene extends SimpleApplication {
     
     public void add_cross(float[] cross_size,float[] road_size,float[] position){
         float cha = cross_size[0] + road_size[2];
-        Texture tex_cross = tex_init("Scenes/Task/two/crossing.png", true);
+        Texture tex_cross = tex_init("Scenes/Task/two/cross.jpg", true);
         float[] cross_roatation = {0,0,0};
         Spatial cross_sp = Spatial_init(cross_size, scaleTextureCoordinates, tex_cross);
         add_sp(cross_sp, position, cross_roatation);
@@ -265,18 +282,19 @@ public class The_First_Scene extends SimpleApplication {
     public void add_T_cross(float[] T_cross_size,float[] T_road_size, Node N){
         
         float cha = T_cross_size[0] + T_road_size[2];
-        Texture  Tcross_tex = tex_init("Scenes/Task/two/crossing.png", true);
+        Texture  Tcross_tex = tex_init("Scenes/Task/two/cross.jpg", true);
         Spatial Tcross_sp = Spatial_init(T_cross_size, scaleTextureCoordinates, Tcross_tex);
+        Tcross_sp.rotate(0, 3.1415926f, 0);
         N.attachChild(Tcross_sp);
         Texture soild_line_tex = tex_init("Scenes/Task/two/solid_line.jpg", true);
         float[] soild_line_size = {9f,0.01f,13f};
         float cha2 = soild_line_size[2] +cha + T_road_size[2];
         float[] soild_scale = {2,2};
-        Texture Tline_tex1 = tex_init("Scenes/Task/two/s2_new.png", true);
+        Texture Tline_tex1 = tex_init("Scenes/Task/two/s2_new.jpg", true);
         Spatial cross_line1 = Spatial_init(T_road_size, scaleTextureCoordinates, Tline_tex1);
-        Texture Tline_tex2 = tex_init("Scenes/Task/two/s3_new.png", true);
+        Texture Tline_tex2 = tex_init("Scenes/Task/two/s3_new.jpg", true);
         Spatial cross_line2 = Spatial_init(T_road_size, scaleTextureCoordinates, Tline_tex2);
-        Texture Tline_tex3 = tex_init("Scenes/Task/two/s4_new.png", true);
+        Texture Tline_tex3 = tex_init("Scenes/Task/two/s4_new.jpg", true);
         Spatial cross_line3 = Spatial_init(T_road_size, scaleTextureCoordinates, Tline_tex3);
         
         
@@ -287,12 +305,12 @@ public class The_First_Scene extends SimpleApplication {
                 N.attachChild(solid_line);
                 if(i ==0){
                     cross_line1.setLocalTranslation(0f, 0f, (i-1)*cha);
-                    //cross_line1.rotate(0, 3.1415926f, 0);
+                    cross_line1.rotate(0, 3.1415926f, 0);
                     N.attachChild(cross_line1);
                 }
                 else{
                     cross_line2.setLocalTranslation(0f, 0f, (i-1)*cha);
-                    cross_line2.rotate(0f, 3.1415926f, 0f);
+                    //cross_line2.rotate(0f, 3.1415926f, 0f);
                     N.attachChild(cross_line2);
                 }
             }
@@ -301,7 +319,7 @@ public class The_First_Scene extends SimpleApplication {
                 solid_line.setLocalTranslation(-(i)*cha2, 0f, 0f);
                 N.attachChild(solid_line);
                 cross_line3.setLocalTranslation(-(i)*cha, 0f, 0f);
-                cross_line3.rotate(0f, 1.57059f, 0f);
+                cross_line3.rotate(0f, -1.57059f, 0f);
                 N.attachChild(cross_line3);
             }
         }
@@ -320,17 +338,28 @@ public class The_First_Scene extends SimpleApplication {
     
     
    public void Speed_limit(String path){
-        Spatial[] Speed = new Spatial[5];
+        Spatial[] Speed = new Spatial[7];
         for(int i = 0; i<5; i++){
             Speed[i] = Load_model(path, 2f, 2f, 2f);
             Speed[i].rotate(0f, 3.1415926f, 0);
         }
+        Speed[1] = Load_model("Scenes/Task/speedLimit40/speedLimit40.scene", 2f, 2f, 2f);
+        Speed[1].rotate(0f, 3.1415926f, 0);
+        Speed[3] = Load_model("Scenes/Task/speedLimit40/speedLimit40.scene", 2f, 2f, 2f);
+        Speed[3].rotate(0f, 3.1415926f, 0);
         add_sp(Speed[0], -10f, -1.1f, -250f, init_rotation);
         add_sp(Speed[1], -10f, -1.1f, 258f, init_rotation);
         add_sp(Speed[2], 758f, -1.1f, 258f, init_rotation);
         float[] rotarion ={0, 1.57059f,0f}; 
         add_sp(Speed[3], 150f, -1.1f, 217f, rotarion);
         add_sp(Speed[4], 150f, -1.1f, 985f, rotarion);
+        Speed[5] = Load_model("Scenes/Task/speedLimitEnd/speedLimitEnd.scene", 2f, 2f, 2f);
+        Speed[5].rotate(0f, 1.57059f, 0);
+        add_sp(Speed[5], -10f, -1.1f, 785f, rotarion);
+        Speed[6] = Load_model("Scenes/Task/speedLimitEnd/speedLimitEnd.scene", 2f, 2f, 2f);
+        Speed[6].rotate(0f, 3.1415926f, 0);
+        add_sp(Speed[6], 650f, -1.1f, 217f, rotarion);
+        
    }
     
     
@@ -345,38 +374,39 @@ public class The_First_Scene extends SimpleApplication {
        add_sp( Load_model("Scenes/Task/Parking2/Parking.scene", 2f, 2f, 2f), position3, init_rotation);
        float[] position4 = new float[] {700,-1.1f,985f};
        add_sp( Load_model("Scenes/Task/Parking2/Parking.scene", 2f, 2f, 2f), position4, init_rotation);
-       float[] position5 = new float[] {-10f,-1.1f,120f};
+       float[] position5 = new float[] {-10f,-1.1f,70f};
        add_sp( Load_model("Scenes/Task/Parking4/speedLimit50.scene", 2f, 2f, 2f), position5, rotation2);
+       
     }
     
     public void add_Fence(Node N){
         
-        Spatial[] fen = new Spatial[57];
-        for(int i = 0; i<56;i++){
-            fen[i] = Load_model("Scenes/Task/fence/fence2.obj", 0.004f, 0.0013f, 0.002f);
+        Spatial[] fen = new Spatial[6];
+        for(int i = 0; i<5;i++){
+            fen[i] = Load_model("Scenes/Task/fence/fence10.obj", 0.00400f, 0.0013f, 0.002f);
             fen[i].rotate(0f, 1.57059f, 0f);
-            fen[i].setLocalTranslation(0.0f, -0.1f, i*11.6f);
+            fen[i].setLocalTranslation(0.0f, 0.14f, i*114.6f);
             N.attachChild(fen[i]);
         }
-        fen[56] = Load_model("Scenes/Task/fence/fence2.obj", 0.004f, 0.0013f, 0.002f);
-        fen[56].rotate(0f, -1.57059f, 0f);
-        fen[56].setLocalTranslation(0.0f, -0.1f, 0f);
-        N.attachChild(fen[56]);
+        fen[5] = Load_model("Scenes/Task/fence/fence2.obj", 0.004f, 0.0013f, 0.002f);
+        fen[5].rotate(0f, -1.57059f, 0f);
+        fen[5].setLocalTranslation(0.0f, 0.14f, -92.2f);
+        N.attachChild(fen[5]);
     }
     
     public void add_Tree(Node T){
         
-        Spatial[] tree = new Spatial[66];
-        for(int i = 0; i<33;i++){
-            tree[i] = Load_model("Scenes/Task/Tree 02/Tree.obj", 1f, 1f, 1f);
+        Spatial[] tree = new Spatial[22];
+        for(int i = 0; i<11;i++){
+            tree[i] = Load_model("Scenes/Task/Tree 02/Tree.obj", 2f, 2f, 2f);
             tree[i].rotate(0f, 1.57059f, 0f);
-            tree[i].setLocalTranslation(0.0f, -0.1f, i*20f);
+            tree[i].setLocalTranslation(0.0f, 0.2f, i*60f);
             T.attachChild(tree[i]);
         }
-        for(int i = 33; i<66;i++){
-            tree[i] = Load_model("Scenes/Task/Tree 02/Tree.obj", 1f, 1f, 1f);
+        for(int i = 11; i<22;i++){
+            tree[i] = Load_model("Scenes/Task/Tree 02/Tree.obj", 2f, 2f, 2f);
             tree[i].rotate(0f, 1.57059f, 0f);
-            tree[i].setLocalTranslation(22f, -0.1f, (i-33)*20f);
+            tree[i].setLocalTranslation(22f, 0.2f, (i-11)*60f);
             T.attachChild(tree[i]);
         }
     }
