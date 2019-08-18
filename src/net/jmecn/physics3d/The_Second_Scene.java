@@ -46,14 +46,14 @@ public class The_Second_Scene extends SimpleApplication {
         Speed_limit("Scenes/Task/speedLimit80/speedLimit80.scene");
         Guidep();
         add_park("Scenes/Task/Parking_building/Parking.scene");
-       fence_init(5);
-       tree_init(5);
-//         DirectionalLight sun1 = new DirectionalLight();                         // light1
-//         sun1.setDirection(new Vector3f(0.1f, 0.7f, 1.0f).normalizeLocal());
-//         rootNode.addLight(sun1);
-//         DirectionalLight sun2 = new DirectionalLight();                         // light2
-//         sun2.setDirection(new Vector3f(1f, 0f, 1f).normalizeLocal());
-//         rootNode.addLight(sun2);
+        fence_init(5);
+        tree_init(5);
+        DirectionalLight sun1 = new DirectionalLight();                         // light1
+        sun1.setDirection(new Vector3f(0.1f, 0.7f, 1.0f).normalizeLocal());
+        rootNode.addLight(sun1);
+        DirectionalLight sun2 = new DirectionalLight();                         // light2
+        sun2.setDirection(new Vector3f(1f, 0f, 1f).normalizeLocal());
+        rootNode.addLight(sun2);
         Export("Result/scene.j3o");
     }
     
