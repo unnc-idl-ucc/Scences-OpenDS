@@ -17,3 +17,7 @@ In this project, by using JMonkeyEngine SDK3, We can just use existing models or
 ## Design_Choices
 
 We design to built several scenes to study people's behavior in different scene. To simulate more realistic scenes, all objects in the scene are set proportional to the proportion in reality. For the first scene, the road we designed is two-way four-lane. We also design another scene with two-way eight-lane road. With different number of lanes, the driver may have different behaviors when encountering the same event such as being overtaken. We also add fence, tree and some road signs to make the scene more like the same world.
+
+## Contributors
+
+[Zilin Song](https://github.com/ZilinSONG), mentored by [Xiangjun Peng](https://github.com/Shiangjun)
