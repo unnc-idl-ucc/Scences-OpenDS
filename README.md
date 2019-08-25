@@ -4,12 +4,11 @@ Scenes, which were used to conduct user studies, were released.
 
 Motivation
 ============
-
-This project aims to create 3D scene for OpenDS framework by using JMonkeyEngine SDK3. We upload the needed models and textures, the code to build scene and the corresponding generated scene file.
+OpenDS is a useful open drive framework that allows user to create driving task themselves to support their research. However, driving task creation requires the support of the scene model. This project is used to create a corresponding model scene file for the establishment of driving task by JMonkeyEngineer.
 
 Introduction
 ============
-We divided this part in three parts. For the first part, we represent the aim of this project and the choices of the design. The second part is about how you can import and run this project in your own computer. The last part is used to introduce some details about the code flie, which include Geometry, Texture, Models,Light and Export.
+This project aims to create 3D scene for OpenDS framework by using JMonkeyEngine SDK3. We upload the needed models and textures, the code to build scene and the corresponding generated scene file.
 
 Goal
 ============
